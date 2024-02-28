@@ -1,0 +1,23 @@
+---
+name: Pull Request
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  quality:
+    uses: thibaultserti/gh-actions-reusable-workflows/.github/workflows/run-go-quality.yaml@main
+    secrets: inherit
+    permissions:
+      security-events: write
+  docker-release:
+    uses: thibaultserti/gh-actions-reusable-workflows/.github/workflows/push-docker-release.yaml@main
+    needs: quality
+    permissions:
+      id-token: write # This is required for requesting the JWT
+      packages: write
+    with:
+      release: latest
+      use-prebuilt-image: false
+      enable-signing: true

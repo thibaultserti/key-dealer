@@ -1,0 +1,5 @@
+env: prod
+logLevel: info
+
+hostname: localhost
+port: 8080
