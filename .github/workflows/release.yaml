@@ -11,6 +11,10 @@ jobs:
     secrets: inherit
     permissions:
       security-events: write
+    with:
+      go-version: "['1.22']"
+      golangci-lint-version: "v1.56.2"
+      goreleaser-version: "v1.24.0"
   go-release:
     uses: thibaultserti/gh-actions-reusable-workflows/.github/workflows/push-go-release.yaml@main
     needs: quality
@@ -18,6 +22,8 @@ jobs:
       contents: write
       issues: write
       pull-requests: write
+    with:
+      goreleaser-version: "v1.24.0"
   docker-release:
     uses: thibaultserti/gh-actions-reusable-workflows/.github/workflows/push-docker-release.yaml@main
     needs: go-release

@@ -30,7 +30,10 @@ func MakeKeyHandler() http.HandlerFunc {
 				return
 			}
 			w.Header().Set("Content-Type", "application/json")
-			w.Write(keyBytes)
+			_, err = w.Write(keyBytes)
+			if err != nil {
+				logrus.Fatalf("Cannot send response: %v", err)
+			}
 			return
 		}
 
@@ -50,7 +53,10 @@ func MakeKeyHandler() http.HandlerFunc {
 
 		// Renvoyer la clé générée
 		w.Header().Set("Content-Type", "application/json")
-		w.Write([]byte(string(newKey)))
+		_, err = w.Write([]byte(string(newKey)))
+		if err != nil {
+			logrus.Fatalf("Cannot send response: %v", err)
+		}
 	}
 }
 

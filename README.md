@@ -14,4 +14,4 @@
 ## How to
 
 Key dealer exposes static json GCP keys via HTTP. It automatically revokes and renew them once a day.
-The api endpoint to request a key is `/key/<project>/<sa_name>`
+The api endpoint to request a key is `/key/<sa_name>`

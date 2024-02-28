@@ -11,6 +11,8 @@ jobs:
     secrets: inherit
     permissions:
       security-events: write
+    with:
+      go-version: "['1.22']"
   docker-release:
     uses: thibaultserti/gh-actions-reusable-workflows/.github/workflows/push-docker-release.yaml@main
     needs: quality

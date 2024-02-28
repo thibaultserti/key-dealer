@@ -4,7 +4,7 @@ ARG USER=appuser
 ############################
 # STEP 1 build executable binary
 ############################
-FROM golang:1.20-alpine as builder
+FROM golang:1.22-alpine as builder
 ENV UID=10001
 ARG USER
 ARG APP_NAME
